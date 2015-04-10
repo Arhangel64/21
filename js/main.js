@@ -9,21 +9,23 @@
         "seed": 1,
         "min": false,
         "baseUrl": "js",
-        "waitSeconds": 86400000/*,
+        "waitSeconds": 86400000,
         "shim": {
-            "/vendor/bower_components/bootstrap/dist/js/bootstrap": "/vendor/bower_components/jquery/dist/jquery"
-        }*/
+            "utils/OrbitControls": "bower_components/threejs/build/three.js"
+        }
     });
 
     require(defineArray, function main_preloader_module() {
         var defineArray = [];
         defineArray.push("bower_components/threejs/build/three.js");
+        defineArray.push("utils/OrbitControls");
         defineArray.push("core/core");
 
         require(defineArray, function main_module() {
             var Core =  require("core/core");
 
-            new Core();
+            var core = new Core();
+            core.loop();
         });
     });
 })();
